@@ -18,11 +18,13 @@ This project fine-tunes the Gemma-3-4B model using LoRA (Low-Rank Adaptation), o
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1O3WAp2oBoayjeMwB57RLoA5SVUcjcasM)
 
-Alternatively, you can clone the repository and run it manually
-
-```bash
-git clone https://github.com/yourusername/gemma-lora-colab.git
-cd gemma-lora-colab
 
 ## 🛠️ Installation
 Run the following commands in Google Colab:
+```bash
+# Install dependencies
+!pip install --no-deps bitsandbytes accelerate xformers==0.0.29.post3 peft trl triton cut_cross_entropy unsloth_zoo
+!pip install sentencepiece protobuf datasets huggingface_hub hf_transfer
+!pip install --no-deps unsloth
+!pip install --no-deps git+https://github.com/huggingface/transformers@v4.49.0-Gemma-3
+```
