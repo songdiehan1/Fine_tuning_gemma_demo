@@ -36,3 +36,29 @@ This project uses the DeepSeek SFT dataset and selects high-score conversations 
 dataset = load_dataset("Congliu/Chinese-DeepSeek-R1-Distill-data-110k-SFT", streaming=True)
 filtered_dataset = dataset.filter(lambda example: example['repo_name'] == 'zhihu/zhihu_score9.0-10_clean_v10')
 ```
+
+## 🤖 Load Gemma-3-4B and Apply LoRA Fine-Tuning
+
+# Load the Gemma-3-4B model (optimized with Unsloth)
+model, tokenizer = FastModel.from_pretrained(
+    model_name="unsloth/gemma-3-4b-it",
+    max_seq_length=2048,
+    load_in_4bit=True,  # Enable 4-bit quantization for lower VRAM usage
+    load_in_8bit=False,
+    full_finetuning=False,
+)
+```bash
+# Apply LoRA fine-tuning
+model = FastModel.get_peft_model(
+    model,
+    finetune_vision_layers=False,
+    finetune_language_layers=True,
+    finetune_attention_modules=True,
+    finetune_mlp_modules=True,
+    r=8,
+    lora_alpha=8,
+    lora_dropout=0,
+    bias="none",
+    random_state=23,
+)
+```
