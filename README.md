@@ -38,7 +38,7 @@ filtered_dataset = dataset.filter(lambda example: example['repo_name'] == 'zhihu
 ```
 
 ## 🤖 Load Gemma-3-4B and Apply LoRA Fine-Tuning
-
+```bash
 # Load the Gemma-3-4B model (optimized with Unsloth)
 model, tokenizer = FastModel.from_pretrained(
     model_name="unsloth/gemma-3-4b-it",
@@ -47,7 +47,6 @@ model, tokenizer = FastModel.from_pretrained(
     load_in_8bit=False,
     full_finetuning=False,
 )
-```bash
 # Apply LoRA fine-tuning
 model = FastModel.get_peft_model(
     model,
