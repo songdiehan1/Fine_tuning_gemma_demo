@@ -31,7 +31,6 @@ Run the following commands in Google Colab:
 
 ## 📂 Dataset Preparation
 This project uses the DeepSeek SFT dataset and selects high-score conversations from Zhihu.
-### Download the dataset
 ```bash
 dataset = load_dataset("Congliu/Chinese-DeepSeek-R1-Distill-data-110k-SFT", streaming=True)
 filtered_dataset = dataset.filter(lambda example: example['repo_name'] == 'zhihu/zhihu_score9.0-10_clean_v10')
