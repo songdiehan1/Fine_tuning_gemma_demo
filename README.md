@@ -22,7 +22,7 @@ This project fine-tunes the Gemma-3-4B model using LoRA (Low-Rank Adaptation), o
 
 Alternatively, you can clone the repository and run it manually
 
-"""
+'''
 git clone https://github.com/yourusername/gemma-lora-colab.git
 cd gemma-lora-colab
-"""
+'''
