@@ -61,3 +61,31 @@ model = FastModel.get_peft_model(
     random_state=23,
 )
 ```
+### 📌 Notes:
+LoRA dimension r=8 reduces parameter updates while maintaining efficiency.
+4-bit quantization enabled for memory efficiency.
+
+# 🔥 Fine-Tuning Process
+```bash
+trainer = SFTTrainer(
+    model=model,
+    tokenizer=tokenizer,
+    train_dataset=dataset,
+    eval_dataset=None,
+    args=SFTConfig(
+        dataset_text_field="text",
+        per_device_train_batch_size=2,
+        gradient_accumulation_steps=4,
+        warmup_steps=5,
+        max_steps=30,
+        learning_rate=2e-4,
+        logging_steps=1,
+        optim="adamw_8bit",
+        weight_decay=0.01,
+        lr_scheduler_type="linear",
+        seed=23,
+        report_to="none",
+    ),
+)
+trainer.train()
+```
