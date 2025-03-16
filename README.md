@@ -74,19 +74,20 @@ trainer = SFTTrainer(
     eval_dataset=None,
     args=SFTConfig(
         dataset_text_field="text",
-        per_device_train_batch_size=2,
+        per_device_train_batch_size=4,
         gradient_accumulation_steps=4,
-        warmup_steps=5,
-        max_steps=30,
-        learning_rate=2e-4,
+        warmup_steps=50,
+        max_steps=500,
+        learning_rate=1e-4,
         logging_steps=1,
-        optim="adamw_8bit",
-        weight_decay=0.01,
-        lr_scheduler_type="linear",
+        optim="paged_adamw_32bit",
+        weight_decay=0.05,
+        lr_scheduler_type="cosine_with_restarts",
         seed=3407,
         report_to="none",
     ),
 )
 trainer.train()
 ```
-
+### 📌 Notes:
+✅You can modify these parameters according to your needs.
