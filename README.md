@@ -1,4 +1,4 @@
-# Fine-tuning Gemma-3-4B with LoRA on Google Colab
+# Fine-tuning Gemma-3-4B with LoRA
 
 This project fine-tunes the Gemma-3-4B model using LoRA (Low-Rank Adaptation). The training is performed on Google Colab with 4-bit quantization (QLoRA) to reduce VRAM usage, using high-quality Chinese Zhihu dataset.
 
