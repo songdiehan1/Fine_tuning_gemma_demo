@@ -33,7 +33,7 @@ Run the following commands in Google Colab:
 This project uses the DeepSeek SFT dataset and selects high-score conversations from Zhihu.
 ```bash
 dataset = load_dataset("Congliu/Chinese-DeepSeek-R1-Distill-data-110k-SFT", streaming=True)
-filtered_dataset = dataset.filter(lambda example: example['repo_name'] == 'zhihu/zhihu_score9.0-10_clean_v10')
+filtered_dataset = dataset.filter(lambda x: x['repo_name'] == 'zhihu/zhihu_score9.0-10_clean_v10')
 ```
 
 ## 🤖 Load Gemma-3-4B and Apply LoRA Fine-Tuning
@@ -57,7 +57,7 @@ model = FastModel.get_peft_model(
     lora_alpha=8,
     lora_dropout=0,
     bias="none",
-    random_state=23,
+    random_state=3407,
 )
 ```
 ### 📌 Notes:
@@ -83,7 +83,7 @@ trainer = SFTTrainer(
         optim="adamw_8bit",
         weight_decay=0.01,
         lr_scheduler_type="linear",
-        seed=23,
+        seed=3407,
         report_to="none",
     ),
 )
